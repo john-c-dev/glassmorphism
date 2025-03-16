@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Glassmorphism UI design demonstration">
+    <title>Glassmorphism Demo</title>
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background" aria-hidden="true">
+        <!-- Animated background circles -->
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    
+    <main class="container">
+        <h1>Glassmorphism Demo</h1>
+        
+        <section class="glass-card">
+            <h2>What is Glassmorphism?</h2>
+            <p>Glassmorphism is a modern UI design trend that uses a frosted glass effect for elements. It features transparency, blur, and subtle borders to create a glass-like appearance.</p>
+            <p><a href="https://ui.glass/generator/" target="_blank" rel="noopener noreferrer">Glassmorphism CSS Generator</a></p>
+        </section>
+        
+        <section class="glass-card">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Transparent background</li>
+                <li>Background blur effect</li>
+                <li>Subtle light border</li>
+                <li>Minimal shadow effects</li>
+            </ul>
+        </section>
+        
+        <section class="glass-card">
+            <h2>Card with Form</h2>
+            <form id="demoForm" aria-label="Demo form">
+                <input type="text" placeholder="Username" aria-label="Username">
+                <input type="email" placeholder="Email" aria-label="Email">
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('demoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('This form is for demo purposes only');
+        });
+    </script>
+</body>
+</html>
