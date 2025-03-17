@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Glassmorphism UI design demonstration">
+    <meta name="description" content="Glassmorphism UI design demonstration with animated background">
     <title>Glassmorphism Demo</title>
-    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://johncdev.online/assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,34 +34,36 @@
         <section class="glass-card">
             <h2>What is Glassmorphism?</h2>
             <p>Glassmorphism is a modern UI design trend that uses a frosted glass effect for elements. It features transparency, blur, and subtle borders to create a glass-like appearance.</p>
-            <p><a href="https://ui.glass/generator/" target="_blank" rel="noopener noreferrer">Glassmorphism CSS Generator</a></p>
-        </section>
-        
-        <section class="glass-card">
-            <h2>Key Features</h2>
+            
+            <h3>Key Features</h3>
             <ul>
                 <li>Transparent background</li>
                 <li>Background blur effect</li>
                 <li>Subtle light border</li>
                 <li>Minimal shadow effects</li>
             </ul>
+            
+            <p><a href="https://ui.glass/generator/" target="_blank" rel="noopener noreferrer">Glassmorphism CSS Generator</a></p>
         </section>
         
         <section class="glass-card">
-            <h2>Card with Form</h2>
-            <form id="demoForm" aria-label="Demo form">
-                <input type="text" placeholder="Username" aria-label="Username">
-                <input type="email" placeholder="Email" aria-label="Email">
-                <button type="submit">Submit</button>
-            </form>
+            <h2>Glassmorphism CSS Code</h2>
+            <pre class="code-block"><code><span class="selector">.glass-element</span> <span class="punctuation">{</span>
+  <span class="comment">/* Background with transparency */</span>
+  <span class="property">background:</span> <span class="value">rgba(255, 255, 255, 0.15)</span><span class="punctuation">;</span>
+  
+  <span class="comment">/* Blur effect */</span>
+  <span class="property">backdrop-filter:</span> <span class="value">blur(10px)</span><span class="punctuation">;</span>
+  <span class="property">-webkit-backdrop-filter:</span> <span class="value">blur(10px)</span><span class="punctuation">;</span>
+  
+  <span class="comment">/* Border and shape */</span>
+  <span class="property">border:</span> <span class="value">1px solid rgba(255, 255, 255, 0.2)</span><span class="punctuation">;</span>
+  <span class="property">border-radius:</span> <span class="value">15px</span><span class="punctuation">;</span>
+  
+  <span class="comment">/* Shadow for depth */</span>
+  <span class="property">box-shadow:</span> <span class="value">0 8px 32px rgba(0, 0, 0, 0.1)</span><span class="punctuation">;</span>
+<span class="punctuation">}</span></code></pre>
         </section>
     </main>
-
-    <script>
-        document.getElementById('demoForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('This form is for demo purposes only');
-        });
-    </script>
 </body>
 </html>

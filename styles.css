@@ -10,6 +10,16 @@
   --blur-effect: 10px;
   --transition-speed: 0.3s;
   --border-radius: 15px;
+  --code-bg: rgba(0, 0, 0, 0.3);
+  --code-comment: #a0cea7;
+  --code-property: #9cdcfe;
+  --code-value: #ce9178;
+  --code-punctuation: #d4d4d4;
+  --code-border: rgba(255, 255, 255, 0.1);
+  --scrollbar-width: 8px;
+  --scrollbar-track: rgba(255, 255, 255, 0.05);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.2);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
 }
 
 /* Base Styles */
@@ -18,6 +28,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 body {
@@ -28,6 +40,31 @@ body {
   position: relative;
   overflow: hidden;
   background: var(--bg-dark);
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 /* Background Animation */
@@ -74,11 +111,11 @@ body {
 
 /* Layout */
 .container {
-  width: 80%;
-  max-width: 1200px;
+  width: 90%;
+  max-width: 1400px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
   z-index: 1;
   padding: 20px;
 }
@@ -102,11 +139,22 @@ h1 {
   box-shadow: var(--card-shadow);
   padding: 20px;
   color: var(--text-color);
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Typography */
 .glass-card h2 {
   margin-bottom: 15px;
   font-weight: 500;
+}
+
+.glass-card h3 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 1.3rem;
 }
 
 .glass-card p, .glass-card ul {
@@ -115,12 +163,22 @@ h1 {
   line-height: 1.6;
 }
 
+/* List Styling */
 ul {
-  list-style-position: inside;
+  list-style-position: outside;
+  padding-left: 20px;
+  margin-left: 5px;
 }
 
-/* Links */
+li {
+  padding-left: 5px;
+  margin-bottom: 5px;
+}
+
+/* Link Styling */
 .glass-card a {
+  margin-top: 10px;
+  display: inline-block;
   color: var(--link-color);
   text-decoration: none;
   position: relative;
@@ -147,45 +205,102 @@ ul {
   transform: scaleX(1);
 }
 
-/* Form Elements */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-input {
-  padding: 10px;
+/* Code Block Styling */
+.code-block {
+  background: var(--code-bg);
   border-radius: 8px;
-  border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  overflow-x: auto;
+  margin: 15px 0;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  border: 1px solid var(--code-border);
+  position: relative;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  white-space: pre;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 204, 255, 0.3) rgba(0, 0, 0, 0.2);
+}
+
+/* Code Block Scrollbar */
+.code-block::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+.code-block::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 8px 8px;
+}
+
+.code-block::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, rgba(0, 204, 255, 0.3), rgba(102, 238, 255, 0.3));
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.code-block::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, rgba(0, 204, 255, 0.5), rgba(102, 238, 255, 0.5));
+}
+
+/* Code Top Highlight */
+.code-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00ccff, #66eeff);
+  border-radius: 8px 8px 0 0;
+}
+
+/* Code Syntax Highlighting */
+code {
   color: var(--text-color);
+  display: block;
+  tab-size: 2;
 }
 
-input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+code .comment, 
+code .selector-comment {
+  color: var(--code-comment);
 }
 
-button {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--text-color);
-  cursor: pointer;
-  transition: all var(--transition-speed);
+code .property {
+  color: var(--code-property);
 }
 
-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+code .value {
+  color: var(--code-value);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+code .punctuation {
+  color: var(--code-punctuation);
+}
+
+code .selector {
+  color: #569cd6;
+}
+
+/* Responsive Layout */
+@media (max-width: 992px) {
   .container {
     grid-template-columns: 1fr;
+    width: 95%;
   }
   
+  .glass-card {
+    min-height: auto;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
   h1 {
     font-size: 2rem;
   }
